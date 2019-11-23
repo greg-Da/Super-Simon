@@ -1,0 +1,80 @@
+body{
+	background-color: #666666;
+}
+
+#box{
+	border: 2px solid white;
+	height: 44em;
+}
+
+.block{
+	border: 2px solid white;
+	height: 20em;
+	width: 55em;
+	margin-top: 1em;
+}
+
+.row{
+	display: flex;
+	justify-content: space-around;
+}
+
+.red{
+	background-color: red;
+}
+
+.red--Active{
+	background-color: #EA4489;
+}
+
+
+.green{
+	background-color: green;
+}
+
+.green--Active{
+	background-color: #73E845;
+}
+
+.blue{
+	background-color: blue;
+}
+
+.blue--Active{
+	background-color: #44C8ED;
+}
+
+.yellow{
+	background-color: yellow;
+}
+
+.yellow--Active{
+	background-color: #f9f993;
+}
+
+#btnalign{
+	text-align: center;
+}
+
+.btn{
+	height: 3.5em;
+	width: 10em;
+	border-radius: 50px;
+	background-color: lightblue;
+}
+
+#scoreDiv{
+	background-color: white;
+	display: inline-grid;
+	grid-row: 1;
+	width: 25%;
+	margin-left: 6em;
+}
+
+#roundDiv{
+	background-color: white;
+	display: inline-grid;
+	grid-row: 1;
+	width: 25%;
+	margin-left: 28%;
+}
