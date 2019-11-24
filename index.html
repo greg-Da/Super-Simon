@@ -7,6 +7,17 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+		<!-- Trigger/Open The Modal -->
+	<button id="info" class="btn">?</button>
+	<div id="scoreDiv" class="row">
+		<p id="score"></p>
+	</div>
+	<div id="roundDiv" class="row">
+		<p id="round"></p>
+	</div>
+	<h1 id="turn"></h1>
+	<p id="note" class="row">D</p>
+	<br>
 	<div id="box">
 		<div class="row">
 			<div class="red block"></div>
@@ -17,58 +28,45 @@
 			<div class="yellow block"></div>
 		</div>
 	</div>
+
 	<div id="btnalign">
 		<button id="start" class="btn">Start</button>
 		<button id="restart" class="btn" style="display: none;">Start</button>
 		<button id="reset" class="btn">Reset</button>
 	</div>
-	<!-- Trigger/Open The Modal -->
-<button id="info">Info</button>
 
+	<!-- The Modal -->
+	<div id="modalInfo" class="modal" style="display: none;">
 
-	<h1 id="turn"></h1>
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Rules : 
+				<br><br>
+				Press Start to launch a game, a random sequence of colors will be displayed.
+				<br><br>
+				Your goal is to recreate the sequence in the right order.
+				<br><br>
+				The first round begin with a sequence of 4 colors, every new round a new color will be added to the sequence.
+				<br><br>
+				The speed of the game will increase for the first 8 rounds.
+			</p>
+		</div>
 
-	<div id="scoreDiv" class="row">
-		<p>Score :</p>
-		<p id="score"></p>
 	</div>
-	<div id="roundDiv" class="row">
-		<p>Round :</p>
-		<p id="round"></p>
+
+	<!-- The Modal -->
+	<div id="modalGameOver" class="modal" style="display: none;">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<p id="GO">Game Over</p>
+			<p id="modalScore"></p>
+			<p id="modalRound"></p>
+			<button id="modalReset" class="btnRestart">Reset</button>
+		</div>
+
 	</div>
-
-<!-- The Modal -->
-<div id="modalInfo" class="modal" style="display: none;">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Rules : 
-    	<br><br>
-    	Press Start to launch a game, a random combination of colors will be displayed.
-    	<br><br>
-    	Your goal is to recreate the combination in the right order.
-    	<br><br>
-    	The first round begin with a combination of 4 colors, every new round a new color will be added to the combination.
-    	<br><br>
-    	The speed of the game will increase for the first 8 rounds.
-    </p>
-  </div>
-
-</div>
-
-<!-- The Modal -->
-<div id="modalGameOver" class="modal" style="display: none;">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <p>Game Over</p>
-    <p id="modalScore"></p>
-    <p id="modalRound"></p>
-    <button id="modalReset" class="btn">Reset</button>
-  </div>
-
-</div>
 
 
 
