@@ -3,10 +3,9 @@ const red = document.getElementsByClassName("red")[0];
 const blue = document.getElementsByClassName("blue")[0];
 const green = document.getElementsByClassName("green")[0];
 const yellow = document.getElementsByClassName("yellow")[0];
-//get the btn start & reset & restart
+//get the btn start & reset
 const start = document.getElementById("start");
 const reset = document.getElementById("reset");
-const restart = document.getElementById("restart");
 //get  <h1> which will display the current turn
 const turn = document.getElementById("turn");
 //get the note displayer
@@ -58,6 +57,8 @@ turn.innerHTML = "Press Start";
 idScore.innerHTML ="Score : " + goodMoves;
 idRound.innerHTML ="Round : " + round;
 
+//Start this function by default but users can use it only when it is their turn
+playerTurn();
 
 async function IATurn() {
 	//Stop the player turn
@@ -79,28 +80,24 @@ async function IATurn() {
 		switch (simon[i]) {
 			case 0:
 			redLight();
-			console.log(simon);
 			break;
 
 			case 1:
 			blueLight();
-			console.log(simon);
 			break;
 
 			case 2:
 			greenLight();
-			console.log(simon);
 			break;
 
 			case 3:
 			yellowLight();
-			console.log(simon);
 			break;
 		};
-		//Wait 1 sec between hightlighting colors for the first turn and increase the speed after
+		//Wait 1 sec between hightlighting colors for the first turn and increase the speed for each new round
 		await Wait(1000 - (round * 50));
 	}
-	//Allow the player turn and display it
+	//Check wich turn it is & display it
 	pTurn = true;
 	turn.innerHTML = "Your Turn";
 }
@@ -141,7 +138,7 @@ function playerTurn() {
 			}
 		}
 	})
-		
+	//If blue is pressed
 	blue.addEventListener("click", () => {
 		
 		//Check is this is the player's turn
@@ -170,7 +167,7 @@ function playerTurn() {
 			}
 		}
 	})
-
+	//If green is pressed
 	green.addEventListener("click", () => {
 		
 		//Check is this is the player's turn
@@ -200,7 +197,7 @@ function playerTurn() {
 		}
 
 	})
-
+	//If yellow is pressed
 	yellow.addEventListener("click", () => {
 		
 		//Check is this is the player's turn
@@ -347,19 +344,12 @@ async function Wait(ms){
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-//When the game start for the first time it destroys the start bouton, and launch the IA Turn and after the player's Turn
+//When the game start it destroys the start bouton, and launch the IA Turn
 async function Start() {
 	start.style.display = 'none';
 	await IATurn();
-	await playerTurn();
 }
 
-/*If the game has been reset and a new game is started this function will be called, it destroys the start bouton, 
-and launch the IA Turn and not the function playerTurn which is already running in background*/
-async function Restart() {
-	restart.style.display = 'none';
-	await IATurn();
-}
 
 //Stop the current game and totaly reset the game
 function Reset() {
@@ -373,9 +363,7 @@ function Reset() {
 	simon = [];
 	listPlayer = [];
 	pTurn = false;
-	if (start.style.display = 'none';) {
-		restart.style.display = 'inline';
-	}
+	start.style.display = 'inline';
 	idScore.innerHTML = "Score : " + goodMoves;
 	idRound.innerHTML ="Round : " + round;
 }
@@ -388,18 +376,10 @@ start.onclick = function() {
 	
 };
 
-//When clicked pass the stop varaible to false & call a function to restart the game
-restart.onclick = function() {
-
-	stop = false;
-	Restart();
-	
-};
-
 //When clicked call the Reset function
 reset.onclick = function() {
 
-	hasLost();
+	Reset();
 	
 };
 
