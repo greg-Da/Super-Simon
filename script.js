@@ -3,20 +3,23 @@ const blue = document.getElementsByClassName("blue")[0];
 const green = document.getElementsByClassName("green")[0];
 const yellow = document.getElementsByClassName("yellow")[0];
 const start = document.getElementById("start");
+const restart = document.getElementById("restart");
 const reset = document.getElementById("reset");
 const turn = document.getElementById("turn");
 const idRound = document.getElementById("round");
 const idScore = document.getElementById("score");
-// Get the modal
+
 const modal = document.getElementById("modalInfo");
 
-// Get the button that opens the modal
 const info = document.getElementById("info");
 
-// Get the <span> element that closes the modal
+
 const span = document.getElementsByClassName("close")[0];
 
 const gameOver = document.getElementById("modalGameOver");
+const modalReset = document.getElementById("modalReset");
+const modalScore = document.getElementById("modalScore");
+const modalRound = document.getElementById("modalRound");
 
 let nmbColor = 4;
 let round = 1;
@@ -26,6 +29,7 @@ let listPlayer = [];
 let stop = false;
 let goodMoves = 0;
 let playerMove = 0;
+let pTurn = false;
 
 turn.innerHTML = "Press Start";
 
@@ -34,6 +38,7 @@ idRound.innerHTML = round;
 
 
 async function IATurn() {
+	pTurn = false;
 	turn.innerHTML = "IA Turn";
 	for (let i = 0; i != nmbColor; i++) {
 		if (stop) {return}
@@ -61,14 +66,16 @@ async function IATurn() {
 		};
 		await Wait(1000 - (round * 50));
 	}
+	pTurn = true;
+	turn.innerHTML = "Your Turn";
 }
 
 
 
 function playerTurn() {
 	if (stop) {return}
-		turn.innerHTML = "Your Turn";
 	red.addEventListener("click", () => {
+		if (pTurn) {
 		let audio = new Audio('sound/do.wav');
 		audio.play();
 		listPlayer[playerMove] = 0;
@@ -84,9 +91,11 @@ function playerTurn() {
 		if(listPlayer.length === nmbColor){
 			Compare();
 		}
+	}
 	})
 
 	blue.addEventListener("click", () => {
+		if (pTurn) {
 		let audio = new Audio('sound/re.wav');
 		audio.play();
 		listPlayer[playerMove] = 1;
@@ -102,9 +111,11 @@ function playerTurn() {
 		if(listPlayer.length === nmbColor){
 			Compare();
 		}
+	}
 	})
 
 	green.addEventListener("click", () => {
+		if (pTurn) {
 		let audio = new Audio('sound/mi.wav');
 		audio.play();
 		listPlayer[playerMove] = 2;
@@ -120,10 +131,12 @@ function playerTurn() {
 		if(listPlayer.length === nmbColor){
 			Compare();
 		}
+	}
 
 	})
 
 	yellow.addEventListener("click", () => {
+		if (pTurn) {
 		let audio = new Audio('sound/fa.wav');
 		audio.play();
 		listPlayer[playerMove] = 3;
@@ -139,6 +152,7 @@ function playerTurn() {
 		if(listPlayer.length === nmbColor){
 			Compare();
 		}
+	}
 
 	})
 }
@@ -149,7 +163,6 @@ function Compare() {
 	playerArray = listPlayer.join();
 	if (simonArray === playerArray) {
 		console.log("WIN")
-		console.log(speed)
 		hasWon();
 	}
 }
@@ -164,15 +177,23 @@ async function hasWon() {
 	playerMove = 0;
 	listPlayer = [];
 	idRound.innerHTML = round;
-	console.log(listPlayer);
 	await Wait(1000);
 	await IATurn();
 }
 
 function hasLost() {
-	gameOver.style.display = "block";
+	if (modalGameOver.style.display === "none") {
+		modalGameOver.style.display = "block";
+		modalRound.innerHTML = "Round : " + round;
+		modalScore.innerHTML = "Score : " + goodMoves;
+	}
 
+	modalReset.addEventListener("click", () => {
+		modalGameOver.style.display = "none";
+		Reset();
+	});
 }
+
 
 
 function redLight() {
@@ -220,6 +241,11 @@ async function Start() {
 	await playerTurn();
 }
 
+async function Restart() {
+	restart.style.display = 'none';
+	await IATurn();
+}
+
 function Reset() {
 	stop = true;
 	turn.innerHTML = "Press Start";
@@ -230,7 +256,8 @@ function Reset() {
 	goodMoves = 0;
 	simon = [];
 	listPlayer = [];
-	start.style.display = 'inline';
+	pTurn = false;
+	restart.style.display = 'inline';
 	idScore.innerHTML = "0";
 	idRound.innerHTML = round;
 }
@@ -242,26 +269,32 @@ start.onclick = function() {
 	
 };
 
+restart.onclick = function() {
+
+	stop = false;
+	Restart();
+	
+};
+
 reset.onclick = function() {
 
-	gameOver.style.display = "none";
 	Reset();
 	
 };
 
 // When the user clicks the button, open the modal 
 info.onclick = function() {
-  modal.style.display = "block";
+	modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+	modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
 }

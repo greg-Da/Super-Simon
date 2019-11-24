@@ -19,6 +19,7 @@
 	</div>
 	<div id="btnalign">
 		<button id="start" class="btn">Start</button>
+		<button id="restart" class="btn" style="display: none;">Start</button>
 		<button id="reset" class="btn">Reset</button>
 	</div>
 	<!-- Trigger/Open The Modal -->
@@ -37,23 +38,34 @@
 	</div>
 
 <!-- The Modal -->
-<div id="modalInfo" class="modal">
+<div id="modalInfo" class="modal" style="display: none;">
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <p>Rules : 
+    	<br><br>
+    	Press Start to launch a game, a random combination of colors will be displayed.
+    	<br><br>
+    	Your goal is to recreate the combination in the right order.
+    	<br><br>
+    	The first round begin with a combination of 4 colors, every new round a new color will be added to the combination.
+    	<br><br>
+    	The speed of the game will increase for the first 8 rounds.
+    </p>
   </div>
 
 </div>
 
 <!-- The Modal -->
-<div id="modalGameOver" class="modal">
+<div id="modalGameOver" class="modal" style="display: none;">
 
   <!-- Modal content -->
   <div class="modal-content">
     <p>Game Over</p>
-    <button id="reset" class="btn">Reset</button>
+    <p id="modalScore"></p>
+    <p id="modalRound"></p>
+    <button id="modalReset" class="btn">Reset</button>
   </div>
 
 </div>
