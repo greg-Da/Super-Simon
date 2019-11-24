@@ -17,7 +17,7 @@ body{
 	display: flex;
 	justify-content: center;
 }
-
+/* COLORS */
 .red{
 	background-color: red;
 	border-radius: 400px 0 0 0;
@@ -55,6 +55,7 @@ body{
 	background-color: #f9f993;
 }
 
+/* BUTTONS */
 #btnalign{
 	text-align: center;
 }
@@ -82,17 +83,21 @@ body{
 	border: 3px solid black;
 }
 
-#note, #score, #round, #scoreDiv, #roundDiv{
-	color: white;
-	font-size: 1.3em;
-	font-weight: bolder;
-}
+/* MUSIC NOTE */
 
 #note{
 	visibility: hidden;
 	font-size: 1.7em;
 	margin-left: 2.5em;
 }
+
+#note, #score, #round, #scoreDiv, #roundDiv{
+	color: white;
+	font-size: 1.3em;
+	font-weight: bolder;
+}
+
+/* SCORE & ROUND */
 
 #scoreDiv{
 	position: absolute;
@@ -120,6 +125,8 @@ body{
 	margin-left: 2.3em;
 }
 
+/* MODAL */
+
 #info{
 	width: 4.5em;
 	height: 4.5em;
@@ -138,17 +145,16 @@ body{
 }
 
 .modal {
-	/* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
+	position: fixed; 
+	z-index: 1; 
+	padding-top: 100px; /
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4); 
 }
 
 /* Modal Content */
@@ -161,7 +167,7 @@ body{
 	text-align: center;
 }
 
-/* The Close Button */
+
 .close {
 	color: #aaaaaa;
 	float: right;

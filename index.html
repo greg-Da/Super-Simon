@@ -7,18 +7,23 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-		<!-- Trigger/Open The Modal -->
+		<!-- Open The Modal about rules-->
 	<button id="info" class="btn">?</button>
 	<br>
+	<!-- Score -->
 	<div id="scoreDiv" class="row">
 		<p id="score"></p>
 	</div>
+	<!-- Round -->
 	<div id="roundDiv" class="row">
 		<p id="round"></p>
 	</div>
+	<!-- Display turn -->
 	<h1 id="turn"></h1>
+	<!-- Display note -->
 	<p id="note" class="row">DO</p>
 	<br>
+	<!-- Super Simon -->
 	<div id="box">
 		<div class="row">
 			<div class="red block"></div>
@@ -29,13 +34,14 @@
 			<div class="yellow block"></div>
 		</div>
 	</div>
-
+	
+	<!-- Button Start & Reset -->
 	<div id="btnalign">
 		<button id="start" class="btn">Start</button>
 		<button id="reset" class="btn">Reset</button>
 	</div>
 
-	<!-- The Modal -->
+	<!-- The Info Modal -->
 	<div id="modalInfo" class="modal" style="display: none;">
 
 		<!-- Modal content -->
@@ -55,7 +61,7 @@
 
 	</div>
 
-	<!-- The Modal -->
+	<!-- The Game Over Modal -->
 	<div id="modalGameOver" class="modal" style="display: none;">
 
 		<!-- Modal content -->
@@ -63,6 +69,7 @@
 			<p id="GO">Game Over</p>
 			<p id="modalScore"></p>
 			<p id="modalRound"></p>
+			<!-- Button Restart -->
 			<button id="modalReset" class="btnRestart">Reset</button>
 		</div>
 
